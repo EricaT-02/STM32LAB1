@@ -89,9 +89,20 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int counter = -1;
   while (1)
   {
-	  //TODO EX1
+	  if (counter <= 0) {
+		  counter = 3;
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, SET);
+	  } else if (counter <= 2 && counter >0) {
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET);
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
+		  counter--;
+	  }
+
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
