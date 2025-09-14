@@ -99,11 +99,6 @@ int main(void)
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, SET);
-	 } else if (counter > 5) {
-		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
-		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, SET);
-		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, SET);
-		 counter--;
 	 } else if (counter > 3 && counter <= 5) {
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
@@ -113,6 +108,8 @@ int main(void)
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, RESET);
+		 counter--;
+	 } else {
 		 counter--;
 	 }
 
