@@ -222,6 +222,7 @@ int main(void)
 			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
 			display7SEG(counter-4);
 	  } else {
+		  display7SEG(counter-5);
 		  counter--;
 	  }
 
