@@ -143,14 +143,31 @@ int main(void)
   		}
   	}
   int counter = -1;
+  int second = -1;
+  int min = -1;
+  int hour = -1;
   while (1)
   {
 	  if (counter <= 0) {
-		  counter = 11;
-	  }else {
+		  counter = 5;
+		  second = 11;
+	  } else {
 		  counter--;
 	  }
-	  clearNumberOnClock(counter);
+
+	  if (second == 0) {
+		  min = 11;
+	  } else {
+		  second--;
+	  }
+
+	  if (min == 0) {
+		  hour = 11;
+	  } else {
+		  hour--;
+	  }
+
+	  //
 
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
