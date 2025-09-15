@@ -95,10 +95,10 @@ int main(void)
   while (1)
   {
 	  if (counter <= 0) {
-		  counter = 3;
+		  counter = 300;
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, SET);
-	  } else if (counter <= 2 && counter >0) {
+	  } else if (counter <= 200 && counter >0) {
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET);
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
 		  counter--;
@@ -106,7 +106,7 @@ int main(void)
 		  counter--;
 	  }
 
-	  HAL_Delay(1000);
+	  HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
