@@ -185,13 +185,7 @@ int main(void)
 			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_G_Pin, RESET);
 			  break;
 		  default:
-			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_A_Pin, RESET);
-			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_B_Pin, RESET);
-			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_C_Pin, RESET);
-			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_D_Pin, RESET);
-			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_E_Pin, RESET);
-			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_F_Pin, RESET);
-			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_G_Pin, RESET);
+			  break;
 	  }
   }
   while (1)
