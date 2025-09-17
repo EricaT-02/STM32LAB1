@@ -136,40 +136,40 @@ int main(void)
 
 void clearNumberOnClock(int num) {
 	switch(num) {
-	case 0:
+	case 1:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, RESET);
 		break;
-	case 1:
+	case 2:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
 		break;
-	case 2:
+	case 3:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
 		break;
-	case 3:
+	case 4:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, RESET);
 		break;
-	case 4:
+	case 5:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, RESET);
 		break;
-	case 5:
+	case 6:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, RESET);
 		break;
-	case 6:
+	case 7:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, RESET);
 		break;
-	case 7:
+	case 8:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, RESET);
 		break;
-	case 8:
+	case 9:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, RESET);
 		break;
-	case 9:
+	case 10:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_13, RESET);
 		break;
-	case 10:
+	case 11:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_14, RESET);
 		break;
-	case 11:
+	case 0:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
 		break;
 	default:
@@ -179,8 +179,8 @@ void clearNumberOnClock(int num) {
  }
   int counter = -1;
   int second = -1;
-  int min = 0;
-  int hour = 0;
+  int min = -1;
+  int hour = -1;
   while (1)
   {
 
@@ -192,36 +192,27 @@ void clearNumberOnClock(int num) {
 	  }
 
 	  if (second <= 0) {
-		  second = 11;
-		  //min--;
+		  second = 12;
+		  min--;
 	  }
-/*
+
 	  if (min <= 0) {
-		  min = 11;
+		  min = 12;
 		  hour--;
 	  }
 
 	  if (hour <= 0) {
-		  hour = 11;
-	  }*/
-
-	  //clearNumberOnClock(10-second);
-	  //clearNumberOnClock(10-min);
-	  //clearNumberOnClock(10-hour);
-
-	  setNumberOnClock(11-second);
-	  //setNumberOnClock(11-hour);
-	  //setNumberOnClock(11-min);
-	  /*
-	  if ( (10-min) != (11-second) && (10-min) != (11-hour) ) {
-		  clearNumberOnClock(10-min);
+		  hour = 12;
 	  }
-	  if ( (10-hour) != (11-second) && (10-hour) != (11-min) ) {
-		  clearNumberOnClock(10-hour);
-	  }
-	  if ( (10-second) != (11-min) && (10-second) != (11-hour) ) {
-		  clearNumberOnClock(10-second);
-	  }*/
+
+	  clearNumberOnClock(12-second);
+	  clearNumberOnClock(12-min);
+	  clearNumberOnClock(12-hour);
+
+	  setNumberOnClock(12-second);
+	  setNumberOnClock(12-hour);
+	  setNumberOnClock(12-min);
+
 	  HAL_Delay(500);
     /* USER CODE END WHILE */
 
