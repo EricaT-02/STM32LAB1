@@ -205,15 +205,21 @@ void clearNumberOnClock(int num) {
 		  hour = 12;
 	  }
 
-	  clearNumberOnClock(12-second);
-	  clearNumberOnClock(12-min);
-	  clearNumberOnClock(12-hour);
+	  if ( ((min - second) != 1 && (hour - second) != 1 && (second - min - 11) != 0 && (second - hour - 11) != 0) || (second == min) || (second == hour) ) {
+		  clearNumberOnClock(12-second);
+	  }
+	  if ( ((second - min) != 1 && (hour - min) != 1 && (min - second - 11) != 0 && (min - hour - 11) != 0) || second == min || min == hour ) {
+		  clearNumberOnClock(12-min);
+	  }
+	  if ( ((second - hour) != 1 && (min - hour) != 1 && (hour - second - 11) != 0 && (hour - min - 11) != 0) || hour == min || second == hour ) {
+		  clearNumberOnClock(12-hour);
+	  }
 
 	  setNumberOnClock(12-second);
 	  setNumberOnClock(12-hour);
 	  setNumberOnClock(12-min);
 
-	  HAL_Delay(500);
+	  HAL_Delay(4);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
