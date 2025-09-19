@@ -177,49 +177,42 @@ void clearNumberOnClock(int num) {
 		break;
 	}
  }
-  int counter = -1;
+
   int second = -1;
   int min = -1;
   int hour = -1;
   while (1)
   {
-
-	  if (counter <= 0) {
-		  counter = 4;
-		  second--;
-	  } else {
-		  counter--;
-	  }
-
+	  second--;
 	  if (second <= 0) {
-		  second = 12;
+		  second = 59;
 		  min--;
 	  }
 
 	  if (min <= 0) {
-		  min = 12;
+		  min = 59;
 		  hour--;
 	  }
 
 	  if (hour <= 0) {
-		  hour = 12;
+		  hour = 59;
 	  }
 
-	  if ( ((min - second) != 1 && (hour - second) != 1 && (second - min - 11) != 0 && (second - hour - 11) != 0) || (second == min) || (second == hour) ) {
-		  clearNumberOnClock(12-second);
+	  if ( (min/5-second/5)!= 1 && (hour/5-second/5)!= 1 && (second/5-min/5)!= 11 && (second/5-hour/5)!= 11) {
+		  clearNumberOnClock(11-second/5);
 	  }
-	  if ( ((second - min) != 1 && (hour - min) != 1 && (min - second - 11) != 0 && (min - hour - 11) != 0) || second == min || min == hour ) {
-		  clearNumberOnClock(12-min);
+	  if ( (second/5 - min/5)!= 1 && (hour/5 - min/5)!= 1 && (min/5-second/5)!= 11 && (min/5-hour/5)!= 11) {
+		  clearNumberOnClock(11-min/5);
 	  }
-	  if ( ((second - hour) != 1 && (min - hour) != 1 && (hour - second - 11) != 0 && (hour - min - 11) != 0) || hour == min || second == hour ) {
-		  clearNumberOnClock(12-hour);
+	  if ( (second/5-hour/5)!= 1 && (min/5-hour/5)!= 1 && (hour/5-second/5)!= 11 && (hour/5-min/5)!=11 ) {
+		  clearNumberOnClock(11-hour/5);
 	  }
 
-	  setNumberOnClock(12-second);
-	  setNumberOnClock(12-hour);
-	  setNumberOnClock(12-min);
+	  setNumberOnClock(11-second/5);
+	  setNumberOnClock(11-min/5);
+	  setNumberOnClock(11-hour/5);
 
-	  HAL_Delay(4);
+	  HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
