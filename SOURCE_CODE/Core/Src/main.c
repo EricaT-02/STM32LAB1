@@ -192,6 +192,7 @@ int main(void)
 			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_E_Pin, RESET);
 			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_F_Pin, RESET);
 			  HAL_GPIO_WritePin(GPIOB, LED_7SEG_G_Pin, RESET);
+			  break;
 	  }
 }
 
