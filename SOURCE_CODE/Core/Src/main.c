@@ -178,19 +178,25 @@ void clearNumberOnClock(int num) {
 	}
  }
 
-  int second = -1;
-  int min = -1;
-  int hour = -1;
+  int second = 10;
+  int min = 5;
+  int hour = 55;
+  int second_pos = second;
+  int min_pos = min;
+  int hour_pos = hour;
   while (1)
   {
 	  second--;
+	  second_pos = second;
 	  if (second <= 0) {
 		  second = 59;
+		  min_pos = min;
 		  min--;
 	  }
 
 	  if (min <= 0) {
 		  min = 59;
+		  hour_pos = hour;
 		  hour--;
 	  }
 
@@ -199,13 +205,13 @@ void clearNumberOnClock(int num) {
 	  }
 
 	  if ( (min/5-second/5)!= 1 && (hour/5-second/5)!= 1 && (second/5-min/5)!= 11 && (second/5-hour/5)!= 11) {
-		  clearNumberOnClock(11-second/5);
+		  clearNumberOnClock(11-second_pos/5);
 	  }
 	  if ( (second/5 - min/5)!= 1 && (hour/5 - min/5)!= 1 && (min/5-second/5)!= 11 && (min/5-hour/5)!= 11) {
-		  clearNumberOnClock(11-min/5);
+		  clearNumberOnClock(11-min_pos/5);
 	  }
 	  if ( (second/5-hour/5)!= 1 && (min/5-hour/5)!= 1 && (hour/5-second/5)!= 11 && (hour/5-min/5)!=11 ) {
-		  clearNumberOnClock(11-hour/5);
+		  clearNumberOnClock(11-hour_pos/5);
 	  }
 
 	  setNumberOnClock(11-second/5);
