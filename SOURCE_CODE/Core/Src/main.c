@@ -136,40 +136,40 @@ int main(void)
 
 void clearNumberOnClock(int num) {
 	switch(num) {
-	case 1:
+	case 0:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, RESET);
 		break;
-	case 2:
+	case 1:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
 		break;
-	case 3:
+	case 2:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
 		break;
-	case 4:
+	case 3:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, RESET);
 		break;
-	case 5:
+	case 4:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, RESET);
 		break;
-	case 6:
+	case 5:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, RESET);
 		break;
-	case 7:
+	case 6:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, RESET);
 		break;
-	case 8:
+	case 7:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, RESET);
 		break;
-	case 9:
+	case 8:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, RESET);
 		break;
-	case 10:
+	case 9:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_13, RESET);
 		break;
-	case 11:
+	case 10:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_14, RESET);
 		break;
-	case 0:
+	case 11:
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
 		break;
 	default:
@@ -178,45 +178,52 @@ void clearNumberOnClock(int num) {
 	}
  }
 
-  int second = 10;
-  int min = 5;
-  int hour = 55;
-  int second_pos = second;
-  int min_pos = min;
-  int hour_pos = hour;
+  int second = 0;
+  int min = 4;
+  int hour =6;
+  int second_prev = -1;
+  int min_prev = -1;
+  int hour_prev = -1;
   while (1)
   {
+
+	  second_prev = second;
+	  min_prev=min;
+	  hour_prev=hour;
 	  second--;
-	  second_pos = second;
 	  if (second <= 0) {
 		  second = 59;
-		  min_pos = min;
+
 		  min--;
 	  }
 
 	  if (min <= 0) {
 		  min = 59;
-		  hour_pos = hour;
+
 		  hour--;
 	  }
 
 	  if (hour <= 0) {
-		  hour = 59;
+		  hour = 11;
+	  }
+	  int second_pos = second/5;
+	  	  int min_pos = min/5;
+	  	  int hour_pos = hour;
+
+	  if (min_prev!= -1 && min_prev/5 != min_pos) {
+		  clearNumberOnClock(11-min_prev/5);
+	  }
+	  if (hour_prev!=-1 && hour_prev != hour_pos) {
+		  clearNumberOnClock(11-hour_prev);
+	  }
+	  if (second_prev!=-1 && second_prev/5 != second_pos) {
+		  clearNumberOnClock(11-second_prev/5);
 	  }
 
-	  if ( (min/5-second/5)!= 1 && (hour/5-second/5)!= 1 && (second/5-min/5)!= 11 && (second/5-hour/5)!= 11) {
-		  clearNumberOnClock(11-second_pos/5);
-	  }
-	  if ( (second/5 - min/5)!= 1 && (hour/5 - min/5)!= 1 && (min/5-second/5)!= 11 && (min/5-hour/5)!= 11) {
-		  clearNumberOnClock(11-min_pos/5);
-	  }
-	  if ( (second/5-hour/5)!= 1 && (min/5-hour/5)!= 1 && (hour/5-second/5)!= 11 && (hour/5-min/5)!=11 ) {
-		  clearNumberOnClock(11-hour_pos/5);
-	  }
 
 	  setNumberOnClock(11-second/5);
 	  setNumberOnClock(11-min/5);
-	  setNumberOnClock(11-hour/5);
+	  setNumberOnClock(11-hour);
 
 	  HAL_Delay(10);
     /* USER CODE END WHILE */
