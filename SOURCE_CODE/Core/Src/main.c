@@ -106,7 +106,7 @@ int main(void)
   int counter = 0;
   while (1)
   {
-	  if (counter >= 1) {
+	  if (counter >= 2) {
 		  counter = 0;
 		  clearAllClock();
 	  } else {

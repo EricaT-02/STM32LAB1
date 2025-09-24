@@ -172,9 +172,9 @@ int main(void)
  8000202:	607b      	str	r3, [r7, #4]
   while (1)
   {
-	  if (counter >= 1) {
+	  if (counter >= 2) {
  8000204:	687b      	ldr	r3, [r7, #4]
- 8000206:	2b00      	cmp	r3, #0
+ 8000206:	2b01      	cmp	r3, #1
  8000208:	dd06      	ble.n	8000218 <main+0x2c>
 		  counter = 0;
  800020a:	2300      	movs	r3, #0
@@ -254,7 +254,7 @@ int main(void)
 	  HAL_Delay(1000);
  80002a6:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  80002aa:	f000 f92b 	bl	8000504 <HAL_Delay>
-	  if (counter >= 1) {
+	  if (counter >= 2) {
  80002ae:	e7a9      	b.n	8000204 <main+0x18>
  80002b0:	40010800 	.word	0x40010800
 
