@@ -95,16 +95,16 @@ int main(void)
   while (1)
   {
 	 if (counter <= 0) {
-		 counter = 900;
+		 counter = 9;
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, SET);
-	 } else if (counter > 300 && counter <= 500) {
+	 } else if (counter > 3 && counter <= 5) {
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, RESET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, SET);
 		 counter--;
-	 } else if (counter <= 300 && counter > 0){
+	 } else if (counter <= 3 && counter > 0){
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, SET);
 		 HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, RESET);
@@ -113,7 +113,7 @@ int main(void)
 		 counter--;
 	 }
 
-	 HAL_Delay(10);
+	 HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
