@@ -173,7 +173,6 @@ void clearNumberOnClock(int num) {
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
 		break;
 	default:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, RESET);
 		break;
 	}
  }
@@ -190,10 +189,10 @@ void clearNumberOnClock(int num) {
 	  second_prev = second;
 	  min_prev=min;
 	  hour_prev=hour;
+
 	  second--;
 	  if (second <= 0) {
 		  second = 59;
-
 		  min--;
 	  }
 
@@ -207,19 +206,18 @@ void clearNumberOnClock(int num) {
 		  hour = 11;
 	  }
 	  int second_pos = second/5;
-	  	  int min_pos = min/5;
-	  	  int hour_pos = hour;
+	  int min_pos = min/5;
+	  int hour_pos = hour;
 
-	  if (min_prev!= -1 && min_prev/5 != min_pos) {
-		  clearNumberOnClock(11-min_prev/5);
-	  }
-	  if (hour_prev!=-1 && hour_prev != hour_pos) {
-		  clearNumberOnClock(11-hour_prev);
-	  }
-	  if (second_prev!=-1 && second_prev/5 != second_pos) {
+	  if (second_prev !=-1 && second_prev/5 != second_pos && second_prev/5 != hour_pos && second_prev/5 != second_pos) {
 		  clearNumberOnClock(11-second_prev/5);
 	  }
-
+	  if (min_prev != -1 && min_prev/5 != min_pos && min_prev/5 != hour_pos && min_prev/5 != second_pos) {
+		  clearNumberOnClock(11-min_prev/5);
+	  }
+	  if (hour_prev !=-1 && hour_prev != hour_pos && hour_prev != min_pos && hour_prev != second_pos) {
+		  clearNumberOnClock(11-hour_prev);
+	  }
 
 	  setNumberOnClock(11-second/5);
 	  setNumberOnClock(11-min/5);
